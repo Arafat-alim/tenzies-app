@@ -4,15 +4,18 @@ import Die from "./components/Die";
 
 function App() {
   const [dice, setDice] = React.useState(allNewDice());
+  function generateRandomNumber() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    };
+  }
   //function to create random 10 digit number in an array
   function allNewDice() {
     const newDice = [];
     for (let i = 0; i < 10; i++) {
-      newDice.push({
-        value: Math.ceil(Math.random() * 6),
-        isHeld: false,
-        id: nanoid(),
-      });
+      newDice.push(generateRandomNumber());
     }
 
     return newDice;
@@ -37,13 +40,18 @@ function App() {
     );
   });
 
-  function onRoll() {
-    setDice(allNewDice);
+  function rollDice() {
+    // setDice(allNewDice);
+    setDice((oldDIce) =>
+      oldDIce.map((die) => {
+        return die.isHeld ? die : generateRandomNumber();
+      })
+    );
   }
   return (
     <main>
       <div className="dice-container">{diceElement}</div>
-      <button onClick={onRoll} className="roll-dice">
+      <button onClick={rollDice} className="roll-dice">
         Roll
       </button>
     </main>
