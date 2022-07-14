@@ -1,7 +1,13 @@
 import React from "react";
+import Die from "./components/Die";
 
 function App() {
-  return <div className="App">Welcome Howm</div>;
+  return (
+    <main>
+      <h1>Main Component </h1>
+      <Die />
+    </main>
+  );
 }
 
 export default App;
