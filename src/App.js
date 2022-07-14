@@ -20,10 +20,10 @@ function App() {
   }
   return (
     <main>
-      <div className="dice-container">
-        {diceElement}
-        <button onClick={onRoll}>Roll</button>
-      </div>
+      <div className="dice-container">{diceElement}</div>
+      <button onClick={onRoll} className="roll-dice">
+        Roll
+      </button>
     </main>
   );
 }
