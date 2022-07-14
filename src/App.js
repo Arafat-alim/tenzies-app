@@ -4,8 +4,18 @@ import Die from "./components/Die";
 function App() {
   return (
     <main>
-      <h1>Main Component </h1>
-      <Die />
+      <div className="dice-container">
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+        <Die value={1} />
+      </div>
     </main>
   );
 }
