@@ -57,11 +57,16 @@ function App() {
 
   function rollDice() {
     // setDice(allNewDice);
-    setDice((oldDIce) =>
-      oldDIce.map((die) => {
-        return die.isHeld ? die : generateRandomNumber();
-      })
-    );
+    if (!tenzies) {
+      setDice((oldDIce) =>
+        oldDIce.map((die) => {
+          return die.isHeld ? die : generateRandomNumber();
+        })
+      );
+    } else {
+      setTenzies(false);
+      setDice(allNewDice());
+    }
   }
   return (
     <main>

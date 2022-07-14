@@ -10,6 +10,10 @@ body {
   margin: 0;
   padding: 20px;
   font-family: 'Karla', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 main {
