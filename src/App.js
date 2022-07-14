@@ -64,6 +64,7 @@ function App() {
   }
   return (
     <main>
+      {/* {tenzies && } */}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
@@ -71,7 +72,7 @@ function App() {
       </p>
       <div className="dice-container">{diceElement}</div>
       <button onClick={rollDice} className="roll-dice">
-        Roll
+        {tenzies ? "Reset" : "Roll"}
       </button>
     </main>
   );
