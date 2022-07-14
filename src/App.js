@@ -14,8 +14,8 @@ function App() {
     const firstValue = dice[0].value;
     const allSameValue = dice.every((die) => die.value === firstValue);
     if (allHeld && allSameValue) {
+      alert("Congrats! You Won!!");
       setTenzies(true);
-      console.log("you won");
     }
   }, [dice]);
 
