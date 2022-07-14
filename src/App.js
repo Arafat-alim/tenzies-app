@@ -3,7 +3,21 @@ import React from "react";
 import Die from "./components/Die";
 
 function App() {
+  //! State
   const [dice, setDice] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false);
+
+  //! UseEffect
+  React.useEffect(() => {
+    const allHeld = dice.every((die) => die.isHeld);
+    const firstValue = dice[0].value;
+    const allSameValue = dice.every((die) => die.value === firstValue);
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+      console.log("you won");
+    }
+  }, [dice]);
+
   function generateRandomNumber() {
     return {
       value: Math.ceil(Math.random() * 6),
