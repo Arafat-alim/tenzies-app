@@ -7,6 +7,8 @@ function App() {
   //! State
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
+  const [count, setCount] = React.useState(0);
+  const [message, setMessage] = React.useState("Come-on!");
 
   //! UseEffect
   React.useEffect(() => {
@@ -14,7 +16,7 @@ function App() {
     const firstValue = dice[0].value;
     const allSameValue = dice.every((die) => die.value === firstValue);
     if (allHeld && allSameValue) {
-      alert("Congrats! You Won!!");
+      setMessage("Congrats! You Did It!!");
       setTenzies(true);
     }
   }, [dice]);
@@ -56,6 +58,7 @@ function App() {
   });
 
   function rollDice() {
+    setCount((prevCount) => prevCount + 1);
     // setDice(allNewDice);
     if (!tenzies) {
       setDice((oldDIce) =>
@@ -66,17 +69,22 @@ function App() {
     } else {
       setTenzies(false);
       setDice(allNewDice());
+      setCount(0);
     }
   }
   return (
     <main>
       {tenzies && <Confetti />}
       <h1 className="title">Tenzies</h1>
+      <h3>
+        Total Roll{count > 1 ? "s" : ""} - {count}
+      </h3>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
       <div className="dice-container">{diceElement}</div>
+      <p>{count ? message : ""}</p>
       <button onClick={rollDice} className="roll-dice">
         {tenzies ? "New Game" : "Roll"}
       </button>
