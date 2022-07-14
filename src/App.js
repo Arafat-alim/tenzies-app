@@ -7,12 +7,12 @@ function App() {
   function allNewDice() {
     const newArr = [];
     for (let i = 0; i < 10; i++) {
-      newArr.push(Math.ceil(Math.random() * 6));
+      newArr.push({ value: Math.ceil(Math.random() * 6), isheld: false });
     }
     return newArr;
   }
   const diceElement = dice.map((die) => {
-    return <Die value={die} />;
+    return <Die value={die.value} />;
   });
 
   function onRoll() {
